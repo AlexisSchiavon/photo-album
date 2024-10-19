@@ -20,7 +20,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-4xl font-bold mb-6"
       >
-        Welcome to Our Love Story
+        Esta es nuestra historia de amor
       </motion.h2>
       <motion.p
         initial={{ y: 50, opacity: 0 }}
@@ -28,7 +28,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-xl mb-8"
       >
-        Embark on a journey through our most cherished moments together. This interactive album is a testament to our love and the beautiful memories we've created.
+        Este es un álbum interactivo que es un testimonio de nuestro amor y los hermosos recuerdos que hemos creado. El álbum será actualizado con nuevas fotos y momentos a medida que pasen los días.
       </motion.p>
       <motion.button
         whileHover={{ scale: 1.05 }}
@@ -36,7 +36,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ onStart }) => {
         onClick={onStart}
         className="bg-white text-teal-800 px-8 py-3 rounded-full text-xl font-semibold transition-all duration-300 hover:bg-teal-100"
       >
-        Begin Our Journey
+        Comenzar Nuestro Viaje
       </motion.button>
     </motion.div>
   );

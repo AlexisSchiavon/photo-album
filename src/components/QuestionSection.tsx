@@ -17,14 +17,14 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({ questions }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 0.5 }}
       className="max-w-4xl w-full bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-2xl p-8"
     >
-      <h2 className="text-4xl font-bold mb-8 text-white text-center">Thoughtful Questions</h2>
+      <h2 className="text-4xl font-bold mb-8 text-white text-center">Preguntas para nuestro futuro</h2>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentQuestion}

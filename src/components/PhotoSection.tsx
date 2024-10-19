@@ -4,43 +4,39 @@ import { motion } from 'framer-motion';
 interface PhotoSectionProps {
   date: string;
   text: string;
-  imageUrl: string;
+  imageUrl?: string;
+  imageUrls?: string[];
 }
 
-const PhotoSection: React.FC<PhotoSectionProps> = ({ date, text, imageUrl }) => {
+const PhotoSection: React.FC<PhotoSectionProps> = ({ date, text, imageUrl, imageUrls }) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ duration: 0.5 }}
-      className="max-w-4xl w-full bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden transform-style-3d"
+      className="w-full h-[600px] bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col"
     >
-      <motion.div 
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="p-6 bg-teal-600 bg-opacity-70 text-white text-center"
-      >
-        <h2 className="text-3xl font-semibold">{date}</h2>
-      </motion.div>
-      <motion.div
-        initial={{ scale: 1.2, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.7 }}
-        className="relative h-[60vh] overflow-hidden"
-      >
-        <img src={imageUrl} alt={text} className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
-      </motion.div>
-      <motion.div 
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-        className="p-8 bg-white bg-opacity-10 backdrop-blur-md"
-      >
-        <p className="text-2xl text-center italic text-white">{text}</p>
-      </motion.div>
+      <div className="p-4 flex-shrink-0">
+        <h2 className="text-2xl font-bold mb-2">{date}</h2>
+        <p className="text-lg mb-4">{text}</p>
+      </div>
+      <div className="flex-grow overflow-auto">
+        {imageUrl ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <img src={imageUrl} alt={text} className="max-w-full max-h-full w-auto h-auto" />
+          </div>
+        ) : imageUrls ? (
+          <div className="w-full h-full flex">
+            <div className="w-1/2 h-full flex items-center justify-center">
+              <img src={imageUrls[0]} alt={`${text} 1`} className="max-w-full max-h-full w-auto h-auto" />
+            </div>
+            <div className="w-1/2 h-full flex items-center justify-center">
+              <img src={imageUrls[1]} alt={`${text} 2`} className="max-w-full max-h-full w-auto h-auto" />
+            </div>
+          </div>
+        ) : null}
+      </div>
     </motion.div>
   );
 };
